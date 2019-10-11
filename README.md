@@ -12,14 +12,14 @@ ansible-pull -i hosts -U http://github.com/netispl/wzorzec
 
 ## Wymagania
 Wymagany system Ubuntu 18.04 
-W celu odpalenia playbooka nalezy uruchomić (multiverse w niektorych dystybucjach jest juz dodane):
+W celu odpalenia playbooka nalezy uruchomić:
 
 ```
  apt-add-repository --yes --update ppa:ansible/ansible
  apt-get install git ansible --yes --force-yes
 ```
 
-## Instalacja
+## Instalacja playbooka
 Instalacja projektu (wymaga podania hasła do odszyfrowania klucza):
 
 ```
