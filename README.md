@@ -15,13 +15,13 @@ Wymagany system Ubuntu 18.04
 W celu odpalenia playbooka nalezy uruchomić (multiverse w niektorych dystybucjach jest juz dodane):
 
 ```
-$ apt-add-repository multiverse
-$ apt-get install git ansible --yes --force-yes
+ apt-add-repository multiverse
+ apt-get install git ansible --yes --force-yes
 ```
 
 ## Instalacja
 Instalacja projektu (wymaga podania hasła do odszyfrowania klucza):
 
 ```
-$ ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-notouch
+ ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-notouch
 ```
