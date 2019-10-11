@@ -1,0 +1,68 @@
+- name: Ansible instalacja kasy z ekranem niedotykowym
+  hosts: localhost
+  user: root
+  connection: local
+  tasks:
+    - include_vars: key_vault.yml
+
+    - copy: content="{{  secret_key }}" dest=/tmp/klucz.apt
+
+    - name: Dodanie klucza do apta
+      apt_key:
+        data: "{{ lookup('file', '/tmp/klucz.apt') }}"
+        state: present
+
+    - name: Dodanie repo
+      apt_repository:
+        repo: deb http://repo.netis.pl/ubuntu bionic main
+        state: present
+
+    - name: Zmiana hostname na kasaX    
+      hostname:
+        name: kasaX
+
+    - name: Usuniecie paczek gnome, kde, lightdm
+      apt:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+        update_cache: yes
+      with_items:
+        - gdm3
+        - sddm
+        - lightdm  
+        - gdm  
+
+    - name: Installacja paczek
+      apt:
+        name: "{{ item }}"
+        state: present
+        force: yes
+        update_cache: yes
+      with_items:
+        - curl
+        - mariadb-server
+        - openssh-server
+        - build-essential
+        - gpm
+        - vim
+        - joe
+        - unzip
+        - zip
+        - gdb
+        - rsh-client
+        - gawk
+        - lynx
+        - cups-bsd
+        - xkasnet-client
+        - kasnet-server  
+        - xkasnet-client-autostart
+        - xinput-calibrator
+        - curl
+        - setserial
+        - nmap
+        - rsh-client
+        - rdate
+        - setserial
+    - debug:
+        msg: "Zrestartuj komputer"
