@@ -15,7 +15,7 @@ Wymagany system Ubuntu 18.04
 W celu odpalenia playbooka nalezy uruchomić (multiverse w niektorych dystybucjach jest juz dodane):
 
 ```
- apt-add-repository multiverse
+ apt-add-repository --yes --update ppa:ansible/ansible
  apt-get install git ansible --yes --force-yes
 ```
 
