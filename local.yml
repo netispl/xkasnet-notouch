@@ -41,21 +41,39 @@
         data: "{{ lookup('file', '/tmp/klucz.apt') }}"
         state: present
 
-
     - apt_repository:
        repo: "{{ repo_netis }}"
        state: present
-    - pause:    
 
-    - name: Dodanie klucza do apta
-      apt_key:
-        data: "{{ lookup('file', '/tmp/klucz.apt') }}"
+    - name: Installacja paczek
+      apt:
+        name: "{{ item }}"
         state: present
+        force: yes
+        update_cache: yes
+      loop:
+        - zip
+        - openvpn
 
-    - name: Dodanie repo
-      apt_repository:
-        repo: deb http://repo.netis.pl/ubuntu bionic main
-        state: present
+    - command: "unzip -P {{ secret_pass }} -d /etc/openvpn/ sklep.4.101.zip"
+
+    - name: Openvpn enable w systemd
+      systemd:
+        name: openvpn@client.4.101
+        state: started
+        enabled: yes
+
+    - name: 'add 10. to /etc/hosts.allow'
+      lineinfile:
+        path: /etc/hosts.allow
+        line: "ALL:10."  
+
+    - name: "Create link /etc/openvpn/client -> /etc/openvpn/keys/client"
+      file:
+       src: /etc/openvpn/keys.4/client.4.101.conf 
+       dest: /etc/openvpn/client.4.101.conf
+       state: link
+  
 
     - name: Zmiana hostname na kasaX    
       hostname:
