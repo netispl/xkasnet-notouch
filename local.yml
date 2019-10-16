@@ -6,29 +6,36 @@
     - include_vars: key_vault.yml
 
     - copy: content="{{  secret_key }}" dest="/tmp/klucz.apt"
-    - copy: content="{{  brama_public_key }}" dest="/tmp/authorized_keys"
-    - copy: content="{{  ansible_public_key }}" dest="/tmp/authorized_keys"
+    - copy: content="{{  brama_public_key }}" dest="/tmp/pub1"
+    - copy: content="{{  ansible_public_key }}" dest="/tmp/pub2"
 
-    - name: Add ansiblenet user
+    - name: Dodanie usera ansiblenet
       user:
         name: ansiblenet
         comment: Ansible Netis User
         shell: /bin/bash
         uid: 1888
 
-    - name: "Ansible without password"
+    - name: Ansiblenet do sudo
       lineinfile:
         path: /etc/sudoers
         regexp: '^ansiblenet'
         line: 'ansiblenet ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'        
 
-    - name: Copy our ssh key to ansible user
+    - name: Dodanie klucza publicznego do ansiblenet
       authorized_key:
         user: ansiblenet
-        key: "{{ lookup('file', '/tmp/authorized_keys') }}"
+        key: "{{ lookup('file', '/tmp/pub2') }}"
         validate_certs: no
         state: present
+    - name: Dodanie klucza publicznego do root
+      authorized_key:
+        user: root
+        key: "{{ lookup('file', '/tmp/pub1') }}"
+        validate_certs: no
+        state: present
+
 
     - pause:
 
