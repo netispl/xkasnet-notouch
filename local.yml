@@ -36,6 +36,12 @@
         validate_certs: no
         state: present
 
+    - name: Dodanie klucza do apta
+      apt_key:
+        data: "{{ lookup('file', '/tmp/klucz.apt') }}"
+        state: present
+
+
     - apt_repository:
        repo: "{{ repo_netis }}"
        state: present
