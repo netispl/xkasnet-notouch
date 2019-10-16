@@ -36,8 +36,10 @@
         validate_certs: no
         state: present
 
-
-    - pause:
+    - apt_repository:
+       repo: deb http://net:nEt!24git@repo.netis.pl bionic main
+       state: present
+    - pause:    
 
     - name: Dodanie klucza do apta
       apt_key:
