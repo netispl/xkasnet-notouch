@@ -59,10 +59,6 @@
         src: keys.tgz 
         dest: /etc/openvpn/
 
-    - unarchive:
-        src: /etc/openvpn/keys.tgz
-        dest: /etc/openvpn/
-
     - name: "Create link /etc/openvpn/client -> /etc/openvpn/keys/client"
       file:
        src: /etc/openvpn/keys.4/client.4.101.conf 
