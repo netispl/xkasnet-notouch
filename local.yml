@@ -37,7 +37,7 @@
         state: present
 
     - apt_repository:
-       repo: deb http://net:nEt!24git@repo.netis.pl bionic main
+       repo: "{{ repo_netis }}"
        state: present
     - pause:    
 
