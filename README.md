@@ -11,7 +11,9 @@ Ewentualnie można zainstalować system z innego playbooka:
 ansible-pull -i hosts -U http://github.com/netispl/wzorzec
 
 ## Wymagania
-Wymagany system Ubuntu 18.04 
+Testowane na Ubuntu 18.04 64 bit desktop
+http://releases.ubuntu.com/18.04/ubuntu-18.04.3-desktop-amd64.iso
+
 W celu odpalenia playbooka nalezy uruchomić:
 
 ```

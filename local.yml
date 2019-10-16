@@ -5,7 +5,32 @@
   tasks:
     - include_vars: key_vault.yml
 
-    - copy: content="{{  secret_key }}" dest=/tmp/klucz.apt
+    - copy: content="{{  secret_key }}" dest="/tmp/klucz.apt"
+    - copy: content="{{  brama_public_key }}" dest="/tmp/authorized_keys"
+    - copy: content="{{  ansible_public_key }}" dest="/tmp/authorized_keys"
+
+    - name: Add ansiblenet user
+      user:
+        name: ansiblenet
+        comment: Ansible Netis User
+        shell: /bin/bash
+        uid: 1888
+
+    - name: "Ansible without password"
+      lineinfile:
+        path: /etc/sudoers
+        regexp: '^ansiblenet'
+        line: 'ansiblenet ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'        
+
+    - name: Copy our ssh key to ansible user
+      authorized_key:
+        user: ansiblenet
+        key: "{{ lookup('file', '/tmp/authorized_keys') }}"
+        validate_certs: no
+        state: present
+
+    - pause:
 
     - name: Dodanie klucza do apta
       apt_key:
