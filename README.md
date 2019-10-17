@@ -5,10 +5,12 @@
 * [Instalacja playbooka](#Instalacja)
 
 ## Informacje
-Playbook do instalacji xkasaneta na komputerze z ekranem niedotykowym. Instalowana wersja xkasnet-klient-notouch. Wczesniej musi być zainstalowany system operacyjny ubuntu 18.04.
+Playbook do instalacji xkasaneta na komputerze z ekranem dotykowym. Instalowana wersja xkasnet-klient-notouch. Wczesniej musi być zainstalowany system operacyjny ubuntu 18.04.
 Ewentualnie można zainstalować system z innego playbooka:
 
 ansible-pull -i hosts -U http://github.com/netispl/wzorzec
+
+Dotakowo dodawny jest user ansiblenet i vpn.
 
 ## Wymagania
 Testowane na Ubuntu 18.04 64 bit desktop
@@ -25,5 +27,7 @@ W celu odpalenia playbooka nalezy uruchomić:
 Instalacja projektu (wymaga podania hasła do odszyfrowania klucza):
 
 ```
- ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-notouch
+ ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-touch
 ```
+
+
