@@ -41,12 +41,20 @@
         data: "{{ lookup('file', '/tmp/klucz.apt') }}"
         state: present
 
+    - name: Dodanie auth do repo'    
+      blockinfile:
+          path: /etc/apt/auth.conf.d/repo.conf
+          block: | 
+              machine repo.netis.pl
+              login {{ repo_login }}
+              password {{ repo_pass }}
+          create: yes        
+      
     - apt_repository:
-       repo: "{{ repo_netis }}"
-       state: present
-
- 
-
+        repo: "{{ repo_netis }}"
+        state: present
+        
+        
     - name: Zmiana hostname na kasaX    
       hostname:
         name: kasaX
