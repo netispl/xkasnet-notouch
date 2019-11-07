@@ -27,7 +27,7 @@ W celu odpalenia playbooka nalezy uruchomić:
 Instalacja projektu (wymaga podania hasła do odszyfrowania klucza):
 
 ```
- ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-touch
+ ansible-pull --vault-id @prompt -i hosts -U http://github.com/netispl/xkasnet-notouch
 ```
 
 
