@@ -107,6 +107,7 @@
         - kasnet-server  
         - xkasnet-client-autostart
         - xinput-calibrator
+        - kasnet-src
         - curl
         - setserial
         - nmap
