@@ -103,6 +103,7 @@
         - gawk
         - lynx
         - cups-bsd
+        - xorg
         - xkasnet-client-notouch
         - kasnet-server  
         - xkasnet-client-autostart
