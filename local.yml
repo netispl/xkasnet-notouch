@@ -106,6 +106,8 @@
         - xorg
         - libxml2-dev
         - libicu-dev
+        - ifupdown
+        - net-tools
         - xkasnet-client-notouch
         - kasnet-server  
         - xkasnet-client-autostart
