@@ -108,11 +108,11 @@
         - libicu-dev
         - ifupdown
         - net-tools
-        - xkasnet-client-notouch
-        - kasnet-server  
-        - xkasnet-client-autostart
+        - xkasnet-client-notouch-2.2.14
+        - kasnet-server-2.1.329
+        - xkasnet-client-autostart-2.2.14
         - xinput-calibrator
-        - kasnet-src
+        - kasnet-src-2.1.329
         - curl
         - setserial
         - nmap
