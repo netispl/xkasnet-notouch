@@ -50,7 +50,7 @@
               password {{ repo_pass }}
           create: yes        
       
-   - apt_repository:
+    - apt_repository:
        repo: "{{ repo_netis }}"
        state: present
         
